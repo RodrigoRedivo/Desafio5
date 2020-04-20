@@ -26,11 +26,12 @@ module.exports = {
       month,
       year,
       iso: `${year}-${month}-${day}`,
-      birthDay: `${day}/${month}`
+      birthDay: `${day}/${month}`,
+      format: `${day}/${month}/${year}`
     }
   },
-  grade(schoolYear) {
-    if (schoolYear == "5ºEF") {
+  grade(schoolyear) {
+    if (schoolyear == "5ºEF") {
       return "5º ano ensino fundamental";
     } else if (schoolYear == "6ºEF") {
       return "6º ano ensino fundamental";

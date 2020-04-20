@@ -23,8 +23,10 @@
           {{ student.name }}
         </td>
         <td>{{ student.email}}</td>
-        <td>{{ student.schoolYear}}</td>
-        <td><a href="/students/{{student.id}}">View</a></td>
+        <td>{{ student.schoolyear}}</td>
+        <td>
+          <a href="/students/{{student.id}}">View</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>

@@ -15,32 +15,32 @@
     </div>
 
     <div class="item">
-      <div>Full name</div>
+      <div>Name</div>
       <div>{{ teacher.name }}</div>
     </div>
 
     <div class="item">
       <div>Date of birth</div>
-      <div>{{ teacher.date }}</div>
+      <div>{{ teacher.birth_date }}</div>
     </div>
 
     <div class="item">
       <div>Educational level</div>
         <select name="degree">
-          <option>{{teacher.degree}}</option> 
+          <option>{{teacher.education_level}}</option> 
         </select>
     </div>
     
     
     <div class="item">
-        <div>Type of class</div>
-        <span>{{ "Presential" if teacher.typeOfClass == "Presential" else "Remote" }}</span>
+        <div>Class Type</div>
+        <span>{{ "Presential" if teacher.class_type == "Presential" else "Remote" }}</span>
     </div>
 
     <div class="item">
-      <div>Acting</div>
+      <div>subjects Taught</div>
       <div>
-        {% for acting in teacher.acting %}
+        {% for acting in teacher.subjects_taught %}
           <span>{{acting}}</span>
         {% endfor %}
       </div>

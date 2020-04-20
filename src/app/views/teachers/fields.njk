@@ -10,7 +10,7 @@
   </div>
 
   <div class="item">
-    <div>Full name</div>
+    <div>Name</div>
     <div>
       <input type="text" name="name" placeholder="Name Completed" value="{{ teacher.name }}">
     </div>
@@ -19,35 +19,35 @@
   <div class="item">
     <div>Date of birth</div>
     <div>
-      <input type="date" name="date" value="{{ teacher.date }}">
+      <input type="date" name="birth_date" value="{{ teacher.birth_date }}">
     </div>
   </div>
 
   <div class="item">
     <div>Educational level</div>
     <div>
-      <select name="degree">
+      <select name="education_level">
         <option 
           value="High Complete"
-          {% if teacher.degree == "High Complete" %}
+          {% if teacher.education_level == "High Complete" %}
           selected
           {% endif %}>Complete high school
         </option>
         <option 
           value="Higher Complete"
-          {% if teacher.degree == "Higher Complete" %}
+          {% if teacher.education_level == "Higher Complete" %}
           selected
           {% endif %}>Complete higher education
         </option>
         <option 
           value="Master"
-          {% if teacher.degree == "Master" %}
+          {% if teacher.education_level == "Master" %}
           selected
           {% endif %}>Master's
         </option>
         <option 
           value="Doctorate"
-          {% if teacher.degree == "Doctorate" %}
+          {% if teacher.education_level == "Doctorate" %}
           selected
           {% endif %}>Doctorate degree
         </option>
@@ -56,23 +56,23 @@
   </div>
 
   <div class="item">
-    <div>Type of class</div>
+    <div>Class Type</div>
     <div>
       <span>
         <input
           type="radio"
-          name="typeOfClass"
+          name="class_type"
           value="Presential"
-          {% if teacher.typeOfClass == 'Presential' %} 
+          {% if teacher.class_type == 'Presential' %} 
           checked
           {% endif %}>Presential
       </span>
       <span>
         <input 
           type="radio" 
-          name="typeOfClass" 
+          name="class_type" 
           value="Remote"
-          {% if teacher.typeOfClass == 'Remote'%}
+          {% if teacher.class_type == 'Remote'%}
           checked
           {% endif %}>Remote
       </span>
@@ -80,9 +80,9 @@
   </div>
   <div>
     <div class="item">
-      <div>Acting</div>
+      <div>Subjects Taught</div>
       <div>
-        <input name="acting" value="{{ teacher.acting }}">
+        <input name="subjects_taught" value="{{ teacher.subjects_taught }}">
       </div>
     </div>
   </div>

@@ -11,6 +11,7 @@
       <tr>
         <th>Name Completed</th>
         <th>Side Dish</th>
+        <th>Students</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -22,6 +23,7 @@
           {{ teacher.name }}
         </td>
         <td>{{ teacher.subjects_taught }}</td>
+        <td>{{ teacher.total_students}}</td>
         <td>
           <a href="/teachers/{{teacher.id}}">View</a>
         </td>

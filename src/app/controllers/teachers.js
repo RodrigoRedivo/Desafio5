@@ -4,18 +4,27 @@ const Teacher = require('../models/teacher')
 
 module.exports = {
   index(req, res) {
-    Teacher.all(function (teachers) {
-      return res.render("teachers/index", { teachers })
-    })
+
+    const { filter } = req.query
+
+    if (filter) {
+      Teacher.findBy(filter, function (teachers) {
+        return res.render("teachers/index", { teachers, filter })
+      })
+    } else {
+      Teacher.all(function (teachers) {
+        return res.render("teachers/index", { teachers })
+      })
+    }
   },
   create(req, res) {
     return res.render('teachers/create')
   },
   show(req, res) {
-    Teacher.find(req.params.id, function(teacher) {
+    Teacher.find(req.params.id, function (teacher) {
       if (!teacher) return res.send("Teacher not found")
 
-      teacher.birth_date = date(teacher.birth_date).birthDay 
+      teacher.birth_date = date(teacher.birth_date).birthDay
       teacher.subjects_taught = teacher.subjects_taught.split(",")
 
       teacher.created_at = date(teacher.created_at).format
@@ -37,10 +46,10 @@ module.exports = {
     })
   },
   edit(req, res) {
-    Teacher.find(req.params.id, function(teacher) {
+    Teacher.find(req.params.id, function (teacher) {
       if (!teacher) return res.send("Teacher not found")
 
-      teacher.birth_date = date(teacher.birth_date).iso 
+      teacher.birth_date = date(teacher.birth_date).iso
 
       return res.render("teachers/edit", { teacher })
     })
@@ -53,18 +62,18 @@ module.exports = {
         return res.send('Error')
       }
     }
-    
-    Teacher.update(req.body, function() {
+
+    Teacher.update(req.body, function () {
 
       return res.redirect(`/teachers/${req.body.id}`)
-      
+
     })
   },
   delete(req, res) {
-    Teacher.delete(req.body.id, function() {
+    Teacher.delete(req.body.id, function () {
 
       return res.redirect(`/teachers`)
-    
+
     })
   },
 }

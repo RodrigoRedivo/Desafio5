@@ -54,6 +54,20 @@ module.exports = {
       callback(respost.rows[0])
     })
   },
+  findBy(filter, callback) {
+    db.query(`
+      SELECT teachers.*, count(students) AS total_students
+      FROM teachers
+      LEFT JOIN students ON (students.teacher_id = teachers.id)
+      WHERE teachers.name ILIKE '%${filter}%'
+      OR teachers.subjects_taught ILIKE '%${filter}%'
+      GROUP BY teachers.id
+      ORDER BY total_students DESC`, function(err, respost) {
+        if (err) throw `atabase error!${err}`
+
+        callback(respost.rows)
+      })
+  },
   update(data, callback){
     const query = `
       UPDATE teachers SET 
